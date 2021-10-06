@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="video1.css">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+     <nav>
+       <div class="logo">History Coming To Life</div>
+        <input type="checkbox" id="click">
+        <label for="click" class="menu-btn">
+          <i class="fas fa-bars"></i>
+        </label>
+        <ul>
+          <li><a href="/" class="active">Home</a></li>
+          <li><a href="/about" >About</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+     </nav>
+        <div class = "row no-gutters">
+
+            <div class="col no-gutters">
+                <div class="leftside">
+
+                    <video width="700" height="700" controls="controls" loop autoplay>
+                    <source src="{{ url_for('static', filename='nehru.mp4') }}" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+
+            <div class = "col no-gutters">
+
+                <div class = "rightside">
+                    <h2>
+                        <span class="text-1">Hey, I'm {{ name }}</span>
+                        <span class="text-2">Go Ahead, ask me something</span>
+                    </h2>
+                    <h1>  {{ text3 }}  </h1>
+                    <audio controls autoplay><source src="static/speech.mp3" type="audio/mpeg"></audio>
+
+
+                    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+                    <button class = "btn">
+                        <i class = "fa fa-microphone"></i>
+                        <span class="text">
+                            Ask Questions
+                        </span>
+                        <span class="loading-animate"></span>
+
+                    </button>
+
+
+                    <p id="demo"></p>
+                    <p id="demo1"></p>
+                </div>
+
+
+
+                </div>
+            </div>
+        </div>
+
+<script>
+
+
+    const startBtn = document.querySelector('.btn');
+    const recognition = new webkitSpeechRecognition();
+    recognition.continuous = false;
+    recognition.lang="en=US";
+    recognition.interimResults = false;
+    recognition.maxAlternatives= 1;
+
+    const synth = window.speechSynthesis;
+
+
+
+    startBtn.addEventListener("click", (evt) => {
+        evt.target.classList.add('loading')
+        setTimeout( () => {
+            evt.target.classList.remove('loading')
+        }, 10000);
+        recognition.start();
+
+    });
+
+    recognition.onresult = (e) => {
+
+        const transcript= e.results[0][0].transcript.trim();
+        function capitalizeFirstLetter(string) {
+            return string.charAt(0).toUpperCase() + string.slice(1);
+        }
+
+        const up1 = capitalizeFirstLetter(transcript);
+        const up2 = "?";
+        var res = up1.concat(up2);
+        document.getElementById("demo").innerHTML = res;
+        var entry = {
+            name: transcript
+        };
+        console.log(entry);
+
+  
+
+        .then(function (response) {
+            if (response.status !== 200) {
+            console.log('Response status was not 200 : ${response.status}');
+            return ;
+            }
+
+   
+
+        })
+
+    };
+
+$(window).on("load",function(){
+          $(".loader-wrapper").fadeOut("slow");
+        });
+</script>
+
+</body>
+</html>
+

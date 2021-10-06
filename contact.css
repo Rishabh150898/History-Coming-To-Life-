@@ -1,0 +1,216 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins&display=swap");
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+body{
+    background: linear-gradient(to bottom, #000000 50%, #993333 105%);
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    min-height: 100vh;
+    position: relative;
+}
+
+nav{
+  display:flex;
+  height:80px;
+  width:100%;
+  background:#000;
+  align-items: center;
+  justify-content:space-between;
+  padding:0 50px 0 100px;
+  flex-wrap: wrap;
+}
+nav .logo{
+  color:#fff;
+  font-size:35px;
+  font-weight:600;
+}
+nav ul{
+  display:flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+}
+nav ul li{
+  margin:0 5px;
+}
+nav ul li a{
+  color:#f2f2f2;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 500;
+  padding:8px 15px;
+  border-radius: 5px;
+  letter-spacing:1px;
+  border-bottom:1.5px solid transparent;
+  transition:all 0.3s ease;
+}
+nav ul li a.active,
+nav ul li a:hover{
+  border-color:orange;
+  color:orange;
+}
+nav .menu-btn i{
+  color:#fff;
+  font-size:22px;
+  cursor: pointer;
+  display:none;
+}
+input[type="checkbox"]{
+  display:none;
+}
+@media (max-width:1000px){
+  nav{
+    padding:0 40px 0px 50px;
+  }
+}
+@media (max-width:920px){
+  nav .menu-btn i{
+    display:block;
+  }
+  #click:Checked ~ .menu-btn i:before{
+    content:'\f00d';
+  }
+  nav ul{
+    position:fixed;
+    top:80px;
+    left:-100%;
+    background:#111;
+    height:100vh;
+    width:100%;
+    text-align: center;
+    z-index:10;
+    display:block;
+    transition:all 0.3s ease;
+  }
+  #click:Checked ~ ul {
+    left:0px;
+  }
+  nav ul li{
+    width:100%;
+    margin:40px 0;
+  }
+  nav ul li a{
+    width:100%;
+    margin-left:-100%;
+    display:block;
+    font-size: 20px;
+    transition:0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  #click:Checked ~ ul li a{
+    margin-left:0px;
+  }
+}
+@media (max-width:768px){
+  .content div{
+    font-size: 22px;
+  }
+}
+
+
+
+
+
+.container {
+  margin: 20px 40px;
+  color: white;
+}
+
+.heading {
+  font-size: 40px;
+  color: white;
+}
+
+.heading span {
+  font-style: italic;
+  font-size: 30px;
+}
+
+.profiles {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 80px;
+}
+
+.profile {
+  flex-basis: 260px;
+}
+
+.profile .profile-img {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  filter: grayscale(0);
+  cursor: pointer;
+  transition: 400ms;
+}
+
+.profile:hover .profile-img {
+   transform: scale(1.2);
+}
+
+.user-name {
+  margin-top: 30px;
+  font-size: 35px;
+}
+
+.profile h5 {
+  font-size: 18px;
+  font-weight: 100;
+  letter-spacing: 3px;
+  color: white;
+}
+
+.profile p {
+  font-size: 16px;
+  margin-top: 20px;
+  text-align: justify;
+}
+
+.profile i{
+    margin-top: 40px;
+    font-size: 30px;
+}
+
+@media only screen and (max-width: 1150px) {
+  .profiles {
+    flex-direction: column;
+  }
+
+  .profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .profile p {
+    text-align: center;
+    margin: 20px 60px 80px 60px;
+    font-size: 20px;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .heading {
+    font-size: 40px;
+    color: white;
+    text-align: center;
+  }
+
+  .heading span {
+    font-size: 15px;
+  }
+
+  .profiles {
+    margin: 20px 0;
+  }
+
+  .profile p {
+    margin: 20px 10px 80px 10px;
+  }
+}
